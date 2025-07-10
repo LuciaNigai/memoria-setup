@@ -2,4 +2,7 @@
 /memoria-data
 /memoria-gateway
 /memoria-training
-.env
+.env.auth
+.env.data
+.env.gateway
+.env.training

@@ -50,7 +50,7 @@ services:
     ports:
       - "8080:8080"
     env_file:
-      - .env
+      - .env.gateway
     networks:
       - memoria_network
     depends_on:
@@ -64,7 +64,7 @@ services:
       context: ./memoria-auth
     container_name: memoria-auth
     env_file:
-      - .env
+      - .env.auth
     environment:
       - SPRING_PROFILES_ACTIVE=prod
     networks:
@@ -78,7 +78,7 @@ services:
       context: ./memoria-data
     container_name: memoria-data
     env_file:
-      - .env
+      - .env.data
     environment:
       - SPRING_PROFILES_ACTIVE=prod
     networks:
@@ -92,7 +92,7 @@ services:
       context: ./memoria-training
     container_name: memoria-training
     env_file:
-      - .env
+      - .env.training
     environment:
       - SPRING_PROFILES_ACTIVE=prod
     networks:

@@ -7,7 +7,7 @@ Docker must be installed on your machine to run the application in a production-
 
 ### How to Run the App
 
-1. Create a folder — this will serve as the parent directory for the entire app.
+1. Create a parent folder to hold all Memoria services and this repository.
 
 2. Clone this repository into that folder.
 
@@ -29,17 +29,21 @@ Your directory structure should now look like this:
     ├── memoria-data
     ├── memoria-gateway
     ├── memoria-training
-    └── docker-compose.yaml
+    └── docker-compose.yaml, .env.*.example and .env.*.dev files
 
 ### Configuration
 
-This repository contains a .env_template file with default environment variables.
+Each service has a corresponding .env.service_name.example file that contains the required environment variables.
+To configure the services:
 
-You can rename this file to .env to use it as-is.
+Copy or rename each .env.service_name.example file by removing the .example extension.
 
-For security or customization, feel free to modify it before renaming.
+    Example:
+    Rename .env.auth.example → .env.auth
 
-_**!** If you're running the app with the dev profile (e.g., in an IDE), and you've made changes to .env, make sure to also update the dev.env file in your services to match._
+The values in the example files are safe for development use, but feel free to customize them before renaming.
+
+**_!_ Note: If you're running a service with the dev profile (e.g., from an IDE), and you've modified .env.service_name, make sure to also update the corresponding .env.service_name.dev file inside the service folder to keep them in sync.**
 
 ### Start the App
 
