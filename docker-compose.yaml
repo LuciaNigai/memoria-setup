@@ -1,14 +1,10 @@
-version: '3.8'
-
 services:
   # PostgreSQL for memoria-auth
   postgres_auth:
     image: postgres:16.8
     container_name: postgres_auth
-    environment:
-      POSTGRES_USER: ${AUTH_DB_USER}
-      POSTGRES_PASSWORD: ${AUTH_DB_PASS}
-      POSTGRES_DB: ${AUTH_DB_NAME}
+    env_file:
+      - .env.auth
     volumes:
       - postgres_auth_data:/var/lib/postgresql/data
     ports:
@@ -20,10 +16,8 @@ services:
   postgres_data:
     image: postgres:16.8
     container_name: postgres_data
-    environment:
-      POSTGRES_USER: ${DATA_DB_USER}
-      POSTGRES_PASSWORD: ${DATA_DB_PASS}
-      POSTGRES_DB: ${DATA_DB_NAME}
+    env_file:
+      - .env.data
     volumes:
       - postgres_data_data:/var/lib/postgresql/data
     ports:
@@ -36,7 +30,7 @@ services:
     image: mongo:7.0
     container_name: mongo_training
     ports:
-      - "27017:27017" # MongoDB exposed to localhost
+      - "27017:27017" 
     volumes:
       - mongo_data:/data/db
     networks:
